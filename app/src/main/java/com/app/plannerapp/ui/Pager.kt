@@ -4,13 +4,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 
-class Pager : FragmentStatePagerAdapter() {
+class Pager(fm: FragmentManager?, tabCount: Int) : FragmentStatePagerAdapter(fm!!) {
 
     var tabCount = 0
-    fun Pager(fm: FragmentManager, tabCount: Int) {
-
+    init {
         this.tabCount = tabCount
     }
+
     override fun getItem(position: Int): Fragment {
         //Returning the current tabs
         return when (position) {
@@ -23,7 +23,7 @@ class Pager : FragmentStatePagerAdapter() {
             2 -> {
                 DailyFragment()
             }
-            else -> null
+            else -> DailyFragment()
         }
     }
 
